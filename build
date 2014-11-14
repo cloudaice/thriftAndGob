@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+if [ ! -f build ]; then
+    echo "build master be run within its container" 1>&2
+    exit 1
+fi
+
+CURDIR=`pwd`
+
+cd $CURDIR/thriftAgent
+go build -o $CURDIR/bin/thriftAgent
+echo "build thriftAgent success !!!"
+
+cd $CURDIR/thriftServer
+go build -o $CURDIR/bin/thriftServer
+echo "build thriftServer success !!!"
+
+cd $CURDIR/gobAgent
+go build -o $CURDIR/bin/gobAgent
+echo "build gobAgent success !!!"
+
+cd $CURDIR/gobServer
+go build -o $CURDIR/bin/gobServer
+echo "build gobServer success !!!"
